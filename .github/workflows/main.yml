@@ -1,12 +1,13 @@
 name: Create Archive
 on: [push]
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - name: Archive Release
-      uses: thedoctor0/zip-release@master
+    - uses: actions/checkout@v1
+    - uses: ncipollo/release-action@v1
       with:
-        filename: 'release.zip'
-        exclusions: '*.git* /*node_modules/* .editorconfig'
+        artifacts: "release.tar.gz,foo/*.txt"
+        body: "res"
+        token: ${{ secrets.GITHUB_TOKEN }}
