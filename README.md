@@ -20,7 +20,7 @@
 
 ![image](https://user-images.githubusercontent.com/15382949/123510839-1e330d00-d697-11eb-86c8-65d8700eb8be.png)
 
-
+---
 
 ### Windows
 
@@ -40,6 +40,7 @@
 7. Заменить файл `bible.db3` на `res\Windows\Russian Synodal Translation\bible.db3` из скачанного архива
 8. Отркыть `ProPresentor` и убедиться, что исправления подтянулись (Псалтирь 54:1)
 
+---
 
 #### Новый русский перевод [ссылка](https://bookscafe.net/book/bibliya-bibliya_novyy_russkiy_perevod_ibs-200255.html)
 1. Запустить `ProPresentor`
@@ -59,6 +60,7 @@
 
 ![image](https://user-images.githubusercontent.com/15382949/123509520-6e0dd600-d68f-11eb-913a-295feee101f0.png)
 
+---
 
 ### Macos
 
@@ -68,6 +70,7 @@
 3. Убедиться, что появился новый перевод `(NTC) Russian Synodal Translation`
 ![Снимок экрана 2021-06-14 в 18 18 28](https://user-images.githubusercontent.com/15382949/123508496-4ae02800-d689-11eb-9b6c-b3fbed078172.png)
 
+---
 
 ## Примеры исправлений
 
