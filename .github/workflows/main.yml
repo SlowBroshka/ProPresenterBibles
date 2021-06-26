@@ -12,6 +12,6 @@ jobs:
     - uses: ncipollo/release-action@v1
       with:
         allowUpdates: true
-        artifact: "res"
+        artifacts: "res"
         bodyFile: "body.md"
         token: ${{ secrets.GITHUB_TOKEN }}
