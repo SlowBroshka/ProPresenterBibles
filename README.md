@@ -3,8 +3,8 @@
 
 Репозиторий с исправленными русскими переводами библии для `ProPresentor 7`
 
-- Исравлен синодальный перевод для Macos
-- Исравлен синодальный перевод для Windows
+- Исправлен синодальный перевод для Macos
+- Исправлен синодальный перевод для Windows
 - Добавлен [Новый русский перевод](https://bookscafe.net/book/bibliya-bibliya_novyy_russkiy_perevod_ibs-200255.html) для Windows
 
 
@@ -12,11 +12,11 @@
 
 ### Скачать необходимые файлы
 
-1. Выбрать релиp:
+1. Выбрать релиз:
 
 ![image](https://user-images.githubusercontent.com/15382949/123510831-0d829700-d697-11eb-95c7-16e981aea303.png)
 
-2. Скачать фрхив `artifat.zip`:
+2. Скачать архив `artifat.zip`:
 
 ![image](https://user-images.githubusercontent.com/15382949/123510839-1e330d00-d697-11eb-86c8-65d8700eb8be.png)
 
@@ -38,7 +38,7 @@
 ![image](https://user-images.githubusercontent.com/15382949/123508776-ee7e0800-d68a-11eb-87cb-c9bbfdd9d759.png)
 
 7. Заменить файл `bible.db3` на `res\Windows\Russian Synodal Translation\bible.db3` из скачанного архива
-8. Отркыть `ProPresentor` и убедиться, что исправления подтянулись (Псалтирь 54:1)
+8. Открыть `ProPresentor` и убедиться, что исправления подтянулись (Псалтирь 54:1)
 
 ---
 
@@ -56,7 +56,7 @@
 ![image](https://user-images.githubusercontent.com/15382949/123509100-0bb3d600-d68d-11eb-995f-e48ab68a68c7.png)
 
 7. Заменить файлы `bible.db3` и `rvmetadata.xml` на файлы из скачанного архива `res\Windows\New Russian Translation`
-8. Отркыть `ProPresentor` и убедиться, что появился новый перевод `New Russian Translation` 
+8. Открыть `ProPresentor` и убедиться, что появился новый перевод `New Russian Translation` 
 
 ![image](https://user-images.githubusercontent.com/15382949/123509520-6e0dd600-d68f-11eb-913a-295feee101f0.png)
 
@@ -80,7 +80,7 @@
 - Исправленный синодальный перевод
 ![image](https://user-images.githubusercontent.com/15382949/123508329-26378080-d688-11eb-97af-f20a1d7f35e3.png)
 
-#### Заменены ковычки
+#### Заменены кавычки
 - Стандартный синодальный перевод в `ProPresentor 7`
 ![image](https://user-images.githubusercontent.com/15382949/123508153-153a3f80-d687-11eb-95b0-2c0deabc709c.png)
 - Исправленный синодальный перевод
