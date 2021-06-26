@@ -1,5 +1,9 @@
-name: Create Archive
-on: [push]
+name: Releases
+
+on: 
+  push:
+    tags:
+    - '*'
 
 jobs:
   build:
@@ -8,6 +12,7 @@ jobs:
     - uses: actions/checkout@v1
     - uses: ncipollo/release-action@v1
       with:
-        artifacts: "release.tar.gz,foo/*.txt"
-        body: "res"
+        allowUpdates: true
+        artifact: "res"
+        bodyFile: "body.md"
         token: ${{ secrets.GITHUB_TOKEN }}
