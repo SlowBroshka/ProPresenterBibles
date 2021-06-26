@@ -8,9 +8,7 @@
 - Добавлен [Новый русский перевод](https://bookscafe.net/book/bibliya-bibliya_novyy_russkiy_perevod_ibs-200255.html) для Windows
 
 
-## Установка
-
-### Скачать необходимые файлы
+## Скачать необходимые файлы
 
 1. Выбрать релиз:
 
@@ -22,7 +20,7 @@
 
 ---
 
-### Windows
+### Установка Windows
 
 #### Синодальный перевод
 1. Запустить `ProPresentor`
@@ -62,7 +60,7 @@
 
 ---
 
-### Macos
+### Установка Windows
 
 #### Синодальный перевод
 1. Файл `res\MacOS\Russian Synodal Translation\ntc-rst-ru.rvbible` скопировать в каталог `/Library/Application Support/RenewedVision/RVBibles/v2/`
