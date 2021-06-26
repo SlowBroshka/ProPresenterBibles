@@ -10,6 +10,18 @@
 
 ## Установка
 
+### Скачать необходимые файлы
+
+1. Выбрать релиp:
+
+![image](https://user-images.githubusercontent.com/15382949/123510831-0d829700-d697-11eb-95c7-16e981aea303.png)
+
+2. Скачать фрхив `artifat.zip`:
+
+![image](https://user-images.githubusercontent.com/15382949/123510839-1e330d00-d697-11eb-86c8-65d8700eb8be.png)
+
+
+
 ### Windows
 
 #### Синодальный перевод
