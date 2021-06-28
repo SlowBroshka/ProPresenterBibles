@@ -60,7 +60,7 @@
 
 ---
 
-### Установка Windows
+### Установка Macos
 
 #### Синодальный перевод
 1. Файл `res\MacOS\Russian Synodal Translation\ntc-rst-ru.rvbible` скопировать в каталог `/Library/Application Support/RenewedVision/RVBibles/v2/`
