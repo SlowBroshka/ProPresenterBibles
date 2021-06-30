@@ -1,5 +1,10 @@
-from BibHelp.BiblePart import *
-from BibHelp.DBManager import *
+import os
+
+from src.BibHelp.BiblePart import *
+from src.BibHelp.DBManager import *
+from src.BibHelp.BibleMap import *
+
+USX_EXTENSION = '.usx'
 
 
 class Bible:
@@ -11,6 +16,34 @@ class Bible:
         self.__curr_chapter = ...  # type: Chapter
         self.__curr_verse = ...  # type: Verse
         self.__curr_testament = self.old_testament
+
+    @classmethod
+    def from_usx_folder(self, path_to_usx_folder: str):
+        pass
+
+    @classmethod
+    def from_db(self, path_to_db: str):
+        pass
+
+    def dump_to_usx_format(self, dump_folder: str):
+        all_books = self.get_all_books()
+        for book in all_books:
+            # Check containing in map
+            alias = BIBLE_BOOKS_RU_EN_MAP[book.name]
+            path_to_file = os.path.join(dump_folder, alias + USX_EXTENSION)
+
+            with open(path_to_file, 'a') as file:
+                file.write(f'<?xml version="1.0" encoding="utf-8"?>\n'
+                           f'<usx version="2.0">\n'
+                           f'  <book code="{alias}" '
+                           f'style="id">{book.name}</book>  \n'
+                           f'<para style="mt">{book.name}</para>\n')
+                for chapter in book.chapters:
+                    file.write(f'  <chapter number="{chapter.number}" style="c" />\n')
+                    for verse in chapter.verses:
+                        file.write(f'  <para style="p">\n'
+                                   f'    <verse number="{verse.number}" style="v" />{verse.content}</para>\n')
+
 
     def get_all_books(self):
         return self.old_testament.books + self.new_testament.books

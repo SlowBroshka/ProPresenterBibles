@@ -17,6 +17,8 @@ def main():
     bible.modify_sql_for_pp()
     bible.close()
 
+    bible.dump_to_usx_format('/home/vladk/git/ProPresenterBibles/tmp')
+
 
 if __name__ == '__main__':
     main()
