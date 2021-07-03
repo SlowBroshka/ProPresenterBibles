@@ -3,15 +3,17 @@ import os
 from src.BibHelp.BiblePart import *
 from src.BibHelp.DBManager import *
 from src.BibHelp.BibleMap import *
-
-USX_EXTENSION = '.usx'
+from src.usx.USXWriter import AbstractUSXWriter
 
 
 class Bible:
-    def __init__(self):
+    def __init__(self, usx_writer: AbstractUSXWriter):
         self.db = ...  # type: DBConnection
         self.old_testament = OldTestament()
         self.new_testament = NewTestament()
+
+        self.__usx_writer = usx_writer
+
         self.__curr_book = ...  # type: Book
         self.__curr_chapter = ...  # type: Chapter
         self.__curr_verse = ...  # type: Verse
@@ -30,20 +32,21 @@ class Bible:
         for book in all_books:
             # Check containing in map
             alias = BIBLE_BOOKS_RU_EN_MAP[book.name]
-            path_to_file = os.path.join(dump_folder, alias + USX_EXTENSION)
+            path_to_file = os.path.join(dump_folder, alias + AbstractUSXWriter.USX_EXTENSION)
 
-            with open(path_to_file, 'a') as file:
-                file.write(f'<?xml version="1.0" encoding="utf-8"?>\n'
-                           f'<usx version="2.0">\n'
-                           f'  <book code="{alias}" '
-                           f'style="id">{book.name}</book>  \n'
-                           f'<para style="mt">{book.name}</para>\n')
+            with open(path_to_file, 'w') as file:
+                file.write(self.__usx_writer.start_book(alias, book.name))
                 for chapter in book.chapters:
-                    file.write(f'  <chapter number="{chapter.number}" style="c" />\n')
+                    file.write(self.__usx_writer.start_chapter(chapter.number))
                     for verse in chapter.verses:
-                        file.write(f'  <para style="p">\n'
-                                   f'    <verse number="{verse.number}" style="v" />{verse.content}</para>\n')
+                        file.write(self.__usx_writer.start_verse(verse.number, verse.content))
+                        file.write(self.__usx_writer.end_verse(verse.number, verse.content))
+                    file.write(self.__usx_writer.end_chapter(chapter.number))
+                file.write(self.__usx_writer.end_book(alias, book.name))
 
+        path_to_metadata = os.path.join(dump_folder, "metadata.xml")
+        with open(path_to_metadata, 'w') as file:
+            file.write(self.__usx_writer.generate_metadata())
 
     def get_all_books(self):
         return self.old_testament.books + self.new_testament.books
