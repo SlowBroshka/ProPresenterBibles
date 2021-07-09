@@ -1,16 +1,52 @@
-from BibHelp.BiblePart import *
-from BibHelp.DBManager import *
+import os
+
+from src.BibHelp.BiblePart import *
+from src.BibHelp.DBManager import *
+from src.BibHelp.BibleMap import *
+from src.usx.USXWriter import AbstractUSXWriter
 
 
 class Bible:
-    def __init__(self):
+    def __init__(self, usx_writer: AbstractUSXWriter):
         self.db = ...  # type: DBConnection
         self.old_testament = OldTestament()
         self.new_testament = NewTestament()
+
+        self.__usx_writer = usx_writer
+
         self.__curr_book = ...  # type: Book
         self.__curr_chapter = ...  # type: Chapter
         self.__curr_verse = ...  # type: Verse
         self.__curr_testament = self.old_testament
+
+    @classmethod
+    def from_usx_folder(self, path_to_usx_folder: str):
+        pass
+
+    @classmethod
+    def from_db(self, path_to_db: str):
+        pass
+
+    def dump_to_usx_format(self, dump_folder: str):
+        all_books = self.get_all_books()
+        for book in all_books:
+            # Check containing in map
+            alias = BIBLE_BOOKS_RU_EN_MAP[book.name]
+            path_to_file = os.path.join(dump_folder, alias + AbstractUSXWriter.USX_EXTENSION)
+
+            with open(path_to_file, 'w') as file:
+                file.write(self.__usx_writer.start_book(alias, book.name))
+                for chapter in book.chapters:
+                    file.write(self.__usx_writer.start_chapter(chapter.number))
+                    for verse in chapter.verses:
+                        file.write(self.__usx_writer.start_verse(verse.number, verse.content))
+                        file.write(self.__usx_writer.end_verse(verse.number, verse.content))
+                    file.write(self.__usx_writer.end_chapter(chapter.number))
+                file.write(self.__usx_writer.end_book(alias, book.name))
+
+        path_to_metadata = os.path.join(dump_folder, "metadata.xml")
+        with open(path_to_metadata, 'w') as file:
+            file.write(self.__usx_writer.generate_metadata())
 
     def get_all_books(self):
         return self.old_testament.books + self.new_testament.books

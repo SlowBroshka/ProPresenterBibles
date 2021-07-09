@@ -116,8 +116,10 @@ CREATE TABLE ZBIBLE
     ZBIBLE_REGISTRATION_NUMBER VARCHAR
 );
 
+-- TODO: Use it like template
+-- ZBIBLE_ABBREVIATION should be from translate that i want to replace
 INSERT INTO ZBIBLE (Z_PK, Z_ENT, Z_OPT, ZBIBLE_PUBLISHER, ZBIBLE_NAME, ZBIBLE_COPYRIGHT, ZBIBLE_CHECKSUM,
                     ZBIBLE_REGISTRATION_NAME, ZBIBLE_LANGUAGE, ZBIBLE_ABBREVIATION, ZBIBLE_REGISTRATION_NUMBER)
 VALUES (1, 2, 1, 'Public Domain', 'New Russian Translation', 'Public Domain', 'XXXXXXXXXXX', 'Public Domain', 'Russian',
-        'Public Domain', 'NRT');
+        'ACV', 'Public Domain');
 COMMIT;
