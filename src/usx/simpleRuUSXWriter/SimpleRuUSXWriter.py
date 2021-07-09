@@ -18,7 +18,8 @@ class SimpleRuUSXWriter(AbstractUSXWriter):
         return pattern_str
 
     def end_book(self, alias: str, name: str) -> str:
-        return super(SimpleRuUSXWriter, self).end_book(alias, name)
+        pattern_str = f'</usx>'
+        return pattern_str
 
     def start_chapter(self, number: int) -> str:
         pattern_str = f'  <chapter number="{str(number)}" style="c" />\n'
