@@ -3,11 +3,6 @@ import abc
 
 
 class BiblePart(abc.ABC):
-    # Fragile regexp
-    verse = re.compile(r'^(\d+)\s{2,}(.+?)\n$')
-    chapter = re.compile(r'^Глава\s+(\d+?)\n$')
-    testament = re.compile(r'^((Новый Завет)|(Ветхий Завет))\n$')
-    book = re.compile(r'^(\w(\w|-|\.|\s)+?)\n$')
 
     @abc.abstractmethod
     def print(self):
