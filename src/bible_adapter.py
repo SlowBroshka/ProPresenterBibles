@@ -2,13 +2,14 @@ import io
 import os
 from pathlib import Path
 
-from BibHelp.Bible import *
-from src.usx.simpleRuUSXWriter.SimpleRuUSXWriter import SimpleRuUSXWriter
-from src.BibHelp.Parser.TXTParser import Parsers
+from src.BibHelp.Parser.VisioBibleParser.VisioBibleParser import VisioBibleParser
+from src.BibHelp.Parser.BibleParser import BibleParser
 from src.dump.DBDumper import SQLiteDBumper
 
-IBS_FILE_PATH = r'SYN.txt'
+TXT_BIBLE_PATH = r'SYN.txt'
 DB_NAME = 'bible.db3'
+
+VISIOBIBLE_FOLDER_PATH = r'/home/vladk/Desktop/RU_RST/'
 
 
 def clean_dir(path: str):
@@ -24,18 +25,27 @@ def prep_path(dest_folder_name: str) -> str:
 
 
 def main():
-    usx_res_path = prep_path('tmp')
+    # usx_res_path = prep_path('tmp')
 
-    bible = Bible()
-
+    visioBibleParser = VisioBibleParser()
+    bible = visioBibleParser.parse_all(VISIOBIBLE_FOLDER_PATH)
     sqlite_dumper = SQLiteDBumper(bible=bible)
     sqlite_dumper.dump(DB_NAME)
     sqlite_dumper.close()
 
-
-
+    # bible_parser = BibleParser(testament_parser=testamentParser,
+    #                            book_parser=bookParser,
+    #                            chapter_parser=chapterParser,
+    #                            verse_parser=verseParser)
+    #
+    # bible = bible_parser.parse_all(TXT_BIBLE_PATH)
+    #
+    # sqlite_dumper = SQLiteDBumper(bible=bible)
+    # sqlite_dumper.dump(DB_NAME)
+    # sqlite_dumper.close()
 
     # bible.dump_to_usx_format(usx_res_path)
+
 
 if __name__ == '__main__':
     main()

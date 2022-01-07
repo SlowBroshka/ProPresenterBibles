@@ -1,90 +1,40 @@
-import re
 import io
 
-from abc import ABC, abstractmethod
-
 from src.BibHelp.Bible import Bible
-from src.BibHelp.BiblePart import *
-
-class BiblePartParser(ABC):
-
-    @abstractmethod
-    def match(self, line: str) -> re.Match:
-        pass
-
-    @abstractmethod
-    def from_line(self, match: re.Match) -> BiblePart:
-        pass
-
-class IBSVerseParser(BiblePartParser):
-    __pattern = re.compile(r'^Глава\s+(\d+?)\n$')
-
-    def match(self, line: str) -> re.Match:
-        return IBSVerseParser.__pattern.match(line)
-
-    def from_line(self, match: re.Match) -> BiblePart:
-        verse_num = int(match.group(1))
-        verse_content = match.group(2)
-        return Verse(verse_num, verse_content)
 
 
-class BibleParser(ABC):
+class BibleParser:
 
-    def __init__(self, testament: str, book: str, chapter: str, verse: str):
-        self.testament = re.compile(testament)
-        self.book = re.compile(book)
-        self.chapter = re.compile(chapter)
-        self.verse = re.compile(verse)
+    def __init__(self, testament_parser, book_parser, chapter_parser, verse_parser):
+        self.__bible = Bible()
+        self.__testament_parser = testament_parser
+        self.__book_parser = book_parser
+        self.__chapter_parser = chapter_parser
+        self.__verse_parser = verse_parser
 
-    @abstractmethod
-    def parseAll(self, path: str) -> Bible:
-        res_bible = Bible()
+    def parse_all(self, path: str) -> Bible:
         with io.open(path, encoding='utf-8') as reader:
             for line in reader:
-                res_bible.parse_line(line)
-        return res_bible
-
-    def from_line(self, line: str) -> Verse:
-        pass
-
-    def from_line(self, line: str) -> Chapter:
-        pass
-
+                self.parse_line(line)
+        return self.__bible
 
     def parse_line(self, line: str):
-        if res := self.verse.match(line):
-            new_verse = Verse.from_reg_exp(res)
-            self.__add_verse(new_verse)
+        if res := self.__verse_parser.match(line):
+            new_verse = self.__verse_parser.from_reg_match(res)
+            self.__bible.add_verse(new_verse)
             return
 
-        if res := self.chapter.match(line):
-            new_chapter = Chapter.from_reg_exp(res)
-            self.__add_chapter(new_chapter)
+        if res := self.__chapter_parser.match(line):
+            new_chapter = self.__chapter_parser.from_reg_match(res)
+            self.__bible.add_chapter(new_chapter)
             return
 
-        if res := self.testament.match(line):
-            new_testament = Testament.from_reg_exp(res)
-            self.__add_testament(new_testament)
+        if res := self.__testament_parser.match(line):
+            new_testament = self.__testament_parser.from_reg_match(res)
+            self.__bible.add_testament(new_testament)
             return
 
-        if res := self.book.match(line):
-            new_book = Book.from_reg_exp(res)
-            self.__add_book(new_book)
+        if res := self.__book_parser.match(line):
+            new_book = self.__book_parser.from_reg_match(res)
+            self.__bible.add_book(new_book)
             return
-
-
-    @classmethod
-    def verse(cls) -> re.Pattern:
-        return self.verse
-
-    @classmethod
-    def chapter(cls):
-        return cls.chapter
-
-    @classmethod
-    def book(cls):
-        return cls.book
-
-    @classmethod
-    def testament(cls):
-        return cls.testament

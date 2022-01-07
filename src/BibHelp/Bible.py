@@ -1,5 +1,4 @@
 from src.BibHelp.BiblePart import *
-from src.BibHelp.Parser import BibleParser
 
 
 class Bible:
@@ -23,25 +22,25 @@ class Bible:
     def get_all_books(self):
         return self.old_testament.books + self.new_testament.books
 
-    def __add_verse(self, verse: Verse):
+    def add_verse(self, verse: Verse):
         if not self.__curr_chapter:
             raise ValueError(f'Bible empty Chapter. Verse: [{verse.number}]: [{verse.content}]')
         self.__curr_verse = verse
         self.__curr_chapter.add_verse(self.__curr_verse)
 
-    def __add_chapter(self, chapter: Chapter):
+    def add_chapter(self, chapter: Chapter):
         if not self.__curr_book:
             raise ValueError(f'Bible empty Book. Chapter: [{chapter.number}]')
         self.__curr_chapter = chapter
         self.__curr_book.add_chapter(self.__curr_chapter)
 
-    def __add_book(self, book: Book):
+    def add_book(self, book: Book):
         if not self.__curr_testament:
             raise ValueError(f'Bible empty Testament. Book: [{book.name}]')
         self.__curr_book = book
         self.__curr_testament.add_book(self.__curr_book)
 
-    def __add_testament(self, testament: Testament):
+    def add_testament(self, testament: Testament):
         if testament.name == self.old_testament.name:
             self.__curr_testament = self.old_testament
         elif testament.name == self.new_testament.name:
