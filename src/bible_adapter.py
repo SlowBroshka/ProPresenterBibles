@@ -1,38 +1,39 @@
-import io
 import os
-from pathlib import Path
 
+from src.utils.Utils import Utils
 from src.BibHelp.Parser.VisioBibleParser.VisioBibleParser import VisioBibleParser
-from src.BibHelp.Parser.BibleParser import BibleParser
 from src.dump.DBDumper import SQLiteDBumper
+from src.dump.USXDumper import USXDumper
+from src.usx.simpleRuUSXWriter.SimpleRuUSXWriter import SimpleRuUSXWriter
 
-TXT_BIBLE_PATH = r'SYN.txt'
-DB_NAME = 'bible.db3'
-
+# For visiobible to usx and sql
+DB_NAME = '../tmp/bible.db3'
 VISIOBIBLE_FOLDER_PATH = r'/home/vladk/Desktop/RU_RST/'
+USX_RES_FOLDER = r'../tmp/usx'
 
 
-def clean_dir(path: str):
-    [f.unlink() for f in Path(path).glob('*') if f.is_file()]
+def parse_ru_visiobible_and_dump_to_sql_and_usx(ru_visiobible_path: str,
+                                                sql_dump_path: str,
+                                                usx_dump_path: str):
+    usx_res_path = Utils.prep_path(usx_dump_path)
 
+    visio_bible_parser = VisioBibleParser()
+    bible = visio_bible_parser.parse_all(ru_visiobible_path)
 
-def prep_path(dest_folder_name: str) -> str:
-    cwd = os.getcwd()
-    res_path = os.path.join(cwd, dest_folder_name)
-    Path(res_path).mkdir(parents=True, exist_ok=True)
-    clean_dir(res_path)
-    return res_path
+    bible.print_all_books_info()
 
-
-def main():
-    # usx_res_path = prep_path('tmp')
-
-    visioBibleParser = VisioBibleParser()
-    bible = visioBibleParser.parse_all(VISIOBIBLE_FOLDER_PATH)
     sqlite_dumper = SQLiteDBumper(bible=bible)
-    sqlite_dumper.dump(DB_NAME)
+    sqlite_dumper.dump(sql_dump_path)
+    sqlite_dumper.modify_for_pp()
     sqlite_dumper.close()
 
+    usx_dumper = USXDumper(bible=bible, usx_writer=SimpleRuUSXWriter(os.getcwd()))
+    usx_dumper.dump(usx_res_path)
+
+
+# Not worked yet
+def parse_simple_txt_and_dump_to_sql_and_usx():
+    pass
     # bible_parser = BibleParser(testament_parser=testamentParser,
     #                            book_parser=bookParser,
     #                            chapter_parser=chapterParser,
@@ -43,8 +44,14 @@ def main():
     # sqlite_dumper = SQLiteDBumper(bible=bible)
     # sqlite_dumper.dump(DB_NAME)
     # sqlite_dumper.close()
-
+    #
     # bible.dump_to_usx_format(usx_res_path)
+
+
+def main():
+    parse_ru_visiobible_and_dump_to_sql_and_usx(ru_visiobible_path=VISIOBIBLE_FOLDER_PATH,
+                                                sql_dump_path=DB_NAME,
+                                                usx_dump_path=USX_RES_FOLDER)
 
 
 if __name__ == '__main__':

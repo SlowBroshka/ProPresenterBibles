@@ -11,16 +11,19 @@ class Bible:
         self.__curr_verse = ...  # type: Verse
         self.__curr_testament = self.old_testament
 
-    @classmethod
     def from_usx_folder(self, path_to_usx_folder: str):
         pass
 
-    @classmethod
     def from_db(self, path_to_db: str):
         pass
 
     def get_all_books(self):
         return self.old_testament.books + self.new_testament.books
+
+    def print_all_books_info(self):
+        all_books = self.get_all_books()
+        for book in all_books:
+            print(f'[INFO]: {book.info()}')
 
     def add_verse(self, verse: Verse):
         if not self.__curr_chapter:

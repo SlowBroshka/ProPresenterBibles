@@ -32,7 +32,6 @@ class VisioBibleParser:
             new_verse = self.__verse_parser.from_reg_match(res)
             self.__bible.add_verse(new_verse)
             return
-
         if res := self.__chapter_parser.match(line):
             new_chapter = self.__chapter_parser.from_reg_match(res)
             self.__bible.add_chapter(new_chapter)
@@ -43,17 +42,22 @@ class VisioBibleParser:
         for line in content.splitlines():
             self.__parse_line(line)
 
-    def parse_book(self, book_path: str) -> Book:
-        with open(book_path) as fp:
-            soup = BeautifulSoup(fp, features='html.parser')
+    def parse_book(self, book_path: str):
+        with open(book_path, 'rb') as fp:
+            soup = BeautifulSoup(fp, features='html.parser', exclude_encodings='latin-1')
 
             book_name = VisioBibleParser.book_name(soup)
-            print(book_name)
 
-            self.__bible.add_book(Book(book_name))
-            self.__fill_book(soup)
+            try:
+                self.__bible.add_book(Book(book_name))
+                self.__fill_book(soup)
+            except NameError as err:
+                print(f'{err}, skipped')
+            except Exception as err:
+                print(f'{err}, UNEXPECTED ERROR')
 
     def parse_all(self, path: str):
         for f_book in pathlib.Path(path).glob('*.htm'):
             self.parse_book(str(f_book))
-            return self.__bible
+
+        return self.__bible
