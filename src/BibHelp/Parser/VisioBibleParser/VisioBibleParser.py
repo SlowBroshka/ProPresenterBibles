@@ -44,7 +44,7 @@ class VisioBibleParser:
 
     def parse_book(self, book_path: str):
         with open(book_path, 'rb') as fp:
-            soup = BeautifulSoup(fp, features='html.parser', exclude_encodings='latin-1')
+            soup = BeautifulSoup(fp, features='html.parser', from_encoding='cp1251')
 
             book_name = VisioBibleParser.book_name(soup)
 
