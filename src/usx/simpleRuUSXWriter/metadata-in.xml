@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <DBLMetadata id="bcb27f788f845a7a" revision="1" type="text" typeVersion="1.2">
 	<identification>
-		<name>Russian Synodal Translation</name>
-		<nameLocal>Russian Synodal Translation</nameLocal>
-		<abbreviation>rst</abbreviation>
-		<abbreviationLocal>rst</abbreviationLocal>
+		<name>(NTC) Russian Synodal Translation</name>
+		<nameLocal>(NTC) Russian Synodal Translation</nameLocal>
+		<abbreviation>ntcrst</abbreviation>
+		<abbreviationLocal>ntcrst</abbreviationLocal>
 		<scope>Old and New Testament</scope>
-		<description>Russian: Russian Synodal Translation</description>
+		<description>NTC Russian: Russian Synodal Translation</description>
 		<dateCompleted></dateCompleted>
 		<bundleProducer>MoC</bundleProducer>
 	</identification>
@@ -20,28 +20,30 @@
 		<scriptDirection>LTR</scriptDirection>
 	</language>
 	<bookNames>
-{book_names_list}	</bookNames>
+{book_names_list}
+	</bookNames>
 	<contents>
 		<bookList id="1" default="yes">
-			<name>King James Version</name>
-			<nameLocal>King James Version</nameLocal>
-			<abbreviation>kjv</abbreviation>
-			<abbreviationLocal>kjv</abbreviationLocal>
-			<description>English: King James Version Old and New Testament</description>
+			<name>(NTC) Russian Synodal Translation</name>
+			<nameLocal>(NTC) Russian Synodal Translation</nameLocal>
+			<abbreviation>ntcrst</abbreviation>
+			<abbreviationLocal>ntcrst</abbreviationLocal>
+			<description>NTC Russian: Russian Synodal Translation</description>
 			<range>Old and New Testament</range>
 			<books>
-{codes}			</books>
+{codes}
+			</books>
 		</bookList>
 	</contents>
 	<contact>
-		<rightsHolder>Crown Copyright in UK</rightsHolder>
-		<rightsHolderLocal>Crown Copyright in UK</rightsHolderLocal>
-		<rightsHolderAbbreviation>KJV</rightsHolderAbbreviation>
+		<rightsHolder>Public Domain</rightsHolder>
+		<rightsHolderLocal>Public Domain</rightsHolderLocal>
+		<rightsHolderAbbreviation>WEB</rightsHolderAbbreviation>
 		<rightsHolderURL></rightsHolderURL>
 	</contact>
 	<copyright>
 		<statement contentType="xhtml">
-			<p>Crown Copyright in UK</p>
+			<p>Public Domain</p>
 		</statement>
 	</copyright>
 	<promotion>
@@ -49,7 +51,10 @@
 			<p>
 				<strong>Public Domain</strong>
 			</p>
-			<p>Some of the Bible translations on YouVersion, are in the public domain in the United States; you may copy and quote from such Bibles without restriction. Most of the Bible translations, however, are not in the public domain.</p>
+			<p>Some of the Bible translations on YouVersion, are in the public domain in the United States; you may copy
+				and quote from such Bibles without restriction. Most of the Bible translations, however, are not in the
+				public domain.
+			</p>
 		</promoVersionInfo>
 		<promoEmail contentType="xhtml"></promoEmail>
 	</promotion>

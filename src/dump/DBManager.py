@@ -52,9 +52,7 @@ class DBConnection:
 
     # Fragile and shitty inserting :(
     def __fill_books(self, books: list):
-        pk_books = [[BookNameManager.index_in_bible(books[i].name.ntc_ru_long),
-                     books[i].name.ntc_ru_long] for i in
-                    range(len(books))]
+        pk_books = [[i + 1, books[i].name.ntc_ru_long] for i in range(len(books))]
         self.cursor.executemany('INSERT INTO books (PK, book_name) VALUES (?, ?)', pk_books)
         self.conn.commit()
 

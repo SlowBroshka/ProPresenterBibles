@@ -94,7 +94,7 @@ class Book(BiblePart):
         return res
 
     def info(self):
-        return f'[{self.name.ntc_ru_long}]: Chapters: {len(self.chapters)}. All verses: {self.all_count()} '
+        return f'[{self.name.ntc_ru_long}]: Chapters: {len(self.chapters)}. All verses: {self.all_count()}'
 
 
 class Testament(BiblePart):
@@ -102,8 +102,12 @@ class Testament(BiblePart):
         self.name = str()
         self.books = list()
 
+    def __sort_books(self):
+        self.books = sorted(self.books, key=lambda x: BookNameManager.index_in_bible(x.name.ntc_ru_long))
+
     def add_book(self, book: Book):
         self.books.append(book)
+        self.__sort_books()
 
     def print(self):
         print(f'[Testament] {self.name}')
