@@ -12,6 +12,13 @@ class BookName:
         return f'{self.ntc_ru_long}: {self.en_abbr}'
 
 
+class BookInBible:
+
+    def __init__(self, book: BookName, index: int):
+        self.book = book
+        self.index = index
+
+
 class BookNameManager:
 
     @staticmethod
@@ -19,6 +26,24 @@ class BookNameManager:
         for bookName in BookNameManager.all_books:
             if bookName.has_alias(name):
                 return bookName
+        raise NameError(f'[ERROR]: Can\'t map book: [{name}]')
+
+    @staticmethod
+    def index_in_bible(name: str) -> int:
+        index = 1
+        for bookName in BookNameManager.all_books:
+            if bookName.has_alias(name):
+                return index
+            index += 1
+        raise NameError(f'[ERROR]: Can\'t find book by name: [{name}]')
+
+    @staticmethod
+    def book_in_bible(name: str) -> BookInBible:
+        index = 1
+        for bookName in BookNameManager.all_books:
+            if bookName.has_alias(name):
+                return BookInBible(bookName, index)
+            index += 1
         raise NameError(f'[ERROR]: Can\'t map book: [{name}]')
 
     all_books = [

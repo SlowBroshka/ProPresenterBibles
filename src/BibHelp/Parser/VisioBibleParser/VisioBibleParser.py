@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 
 from src.BibHelp.Bible import Bible
 from src.BibHelp.BiblePart import Book
+from src.BibHelp.BiblePart import Verse
 from src.BibHelp.Parser.VisioBibleParser.VisioBiblePartParsers import chapterParser, verseParser
 
 
@@ -27,9 +28,20 @@ class VisioBibleParser:
         else:
             return ''
 
+    @staticmethod
+    def __beautify_verse(verse: Verse) -> Verse:
+        # Avoid '< >' because verse can be used in usx (xml) format
+        tmp = verse.content.replace('<', '[')
+        tmp = tmp.replace('>', ']')
+        verse.content = tmp
+        return verse
+
     def __parse_line(self, line: str):
         if res := self.__verse_parser.match(line):
             new_verse = self.__verse_parser.from_reg_match(res)
+
+            new_verse = VisioBibleParser.__beautify_verse(new_verse)
+
             self.__bible.add_verse(new_verse)
             return
         if res := self.__chapter_parser.match(line):
