@@ -1,5 +1,7 @@
 import sqlite3
 
+from src.BibHelp.BibleMap import BookNameManager
+
 CREATE_BOOKS = '''
 DROP TABLE IF EXISTS books;
 CREATE TABLE books
@@ -42,14 +44,20 @@ class DBConnection:
         self.cursor.executescript(CREATE_VERSES)
         self.conn.commit()
 
+    def fill_all(self, all_books: list):
+        # So important to pass equal books in fill_* functions
+        self.__fill_books(all_books)
+        self.__fill_chapters(all_books)
+        self.__fill_verses(all_books)
+
     # Fragile and shitty inserting :(
-    def fill_books(self, books: list):
-        pk_books = [[i + 1, books[i].name] for i in range(len(books))]
+    def __fill_books(self, books: list):
+        pk_books = [[i + 1, books[i].name.ntc_ru_long] for i in range(len(books))]
         self.cursor.executemany('INSERT INTO books (PK, book_name) VALUES (?, ?)', pk_books)
         self.conn.commit()
 
     # More fragile and shitty inserting :(
-    def fill_chapters(self, books: list):
+    def __fill_chapters(self, books: list):
         pk = 0
         book_num = 0
         for book in books:
@@ -60,7 +68,7 @@ class DBConnection:
         self.conn.commit()
 
     # More and more fragile and shitty inserting :(
-    def fill_verses(self, books: list):
+    def __fill_verses(self, books: list):
         pk = 0
         book_num = 0
         chapter_num = 0

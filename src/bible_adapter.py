@@ -1,36 +1,58 @@
-import io
-from pathlib import Path
+import os
 
-from BibHelp.Bible import *
+from src.utils.Utils import Utils
+from src.BibHelp.Parser.VisioBibleParser.VisioBibleParser import VisioBibleParser
+from src.dump.DBDumper import SQLiteDBumper
+from src.dump.USXDumper import USXDumper
 from src.usx.simpleRuUSXWriter.SimpleRuUSXWriter import SimpleRuUSXWriter
 
+# For visiobible to usx and sql
+DB_NAME = '../tmp/bible.db3'
+VISIOBIBLE_FOLDER_PATH = r'/home/vladk/Desktop/RU_RST/'
+USX_RES_FOLDER = r'../tmp/usx'
 
-IBS_FILE_PATH = r'IBS.txt'
-DB_NAME = 'bible.db3'
+
+def parse_ru_visiobible_and_dump_to_sql_and_usx(ru_visiobible_path: str,
+                                                sql_dump_path: str,
+                                                usx_dump_path: str):
+    usx_res_path = Utils.prep_path(usx_dump_path)
+
+    visio_bible_parser = VisioBibleParser()
+    bible = visio_bible_parser.parse_all(ru_visiobible_path)
+
+    bible.print_all_books_info()
+
+    sqlite_dumper = SQLiteDBumper(bible=bible)
+    sqlite_dumper.dump(sql_dump_path)
+    sqlite_dumper.modify_for_pp()
+    sqlite_dumper.close()
+
+    usx_dumper = USXDumper(bible=bible, usx_writer=SimpleRuUSXWriter(os.getcwd()))
+    usx_dumper.dump(usx_res_path)
 
 
-def prep_path(dest_folder_name: str) -> str:
-    cwd = os.getcwd()
-    res_path = os.path.join(cwd, dest_folder_name)
-    Path(res_path).mkdir(parents=True, exist_ok=True)
-    [f.unlink() for f in Path(res_path).glob('*') if f.is_file()]
-    return res_path
+# Not worked yet
+def parse_simple_txt_and_dump_to_sql_and_usx():
+    pass
+    # bible_parser = BibleParser(testament_parser=testamentParser,
+    #                            book_parser=bookParser,
+    #                            chapter_parser=chapterParser,
+    #                            verse_parser=verseParser)
+    #
+    # bible = bible_parser.parse_all(TXT_BIBLE_PATH)
+    #
+    # sqlite_dumper = SQLiteDBumper(bible=bible)
+    # sqlite_dumper.dump(DB_NAME)
+    # sqlite_dumper.close()
+    #
+    # bible.dump_to_usx_format(usx_res_path)
 
 
 def main():
-    usx_res_path = prep_path('tmp')
+    parse_ru_visiobible_and_dump_to_sql_and_usx(ru_visiobible_path=VISIOBIBLE_FOLDER_PATH,
+                                                sql_dump_path=DB_NAME,
+                                                usx_dump_path=USX_RES_FOLDER)
 
-
-    bible = Bible(SimpleRuUSXWriter(os.getcwd()))
-
-    with io.open(IBS_FILE_PATH, encoding='utf-8') as reader:
-        for line in reader:
-            bible.parse_line(line)
-    bible.dump_to_sql(DB_NAME)
-    bible.modify_sql_for_pp()
-    bible.close()
-
-    bible.dump_to_usx_format(usx_res_path)
 
 if __name__ == '__main__':
     main()

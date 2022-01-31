@@ -1,13 +1,10 @@
 import re
 import abc
 
+from src.BibHelp.BibleMap import BookNameManager
+
 
 class BiblePart(abc.ABC):
-    # Fragile regexp
-    verse = re.compile(r'^(\d+)\s{2,}(.+?)\n$')
-    chapter = re.compile(r'^Глава\s+(\d+?)\n$')
-    testament = re.compile(r'^((Новый Завет)|(Ветхий Завет))\n$')
-    book = re.compile(r'^(\w(\w|-|\.|\s)+?)\n$')
 
     @abc.abstractmethod
     def print(self):
@@ -65,10 +62,15 @@ class Chapter(BiblePart):
     def print(self):
         print(f'[Chapter] {self.number}')
 
+    def count(self):
+        return len(self.verses)
+
 
 class Book(BiblePart):
     def __init__(self, name: str):
-        self.name = name.strip()
+        book_name = name.strip()
+
+        self.name = BookNameManager.book_name(book_name)
         self.chapters = []
 
     @classmethod
@@ -85,14 +87,27 @@ class Book(BiblePart):
     def print(self):
         print(f'[Book] {self.name}')
 
+    def all_count(self):
+        res = 0
+        for chapter in self.chapters:
+            res = res + chapter.count()
+        return res
+
+    def info(self):
+        return f'[{self.name.ntc_ru_long}]: Chapters: {len(self.chapters)}. All verses: {self.all_count()}'
+
 
 class Testament(BiblePart):
     def __init__(self):
         self.name = str()
         self.books = list()
 
+    def __sort_books(self):
+        self.books = sorted(self.books, key=lambda x: BookNameManager.index_in_bible(x.name.ntc_ru_long))
+
     def add_book(self, book: Book):
         self.books.append(book)
+        self.__sort_books()
 
     def print(self):
         print(f'[Testament] {self.name}')
