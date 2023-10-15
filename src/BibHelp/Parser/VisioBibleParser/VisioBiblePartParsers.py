@@ -1,4 +1,5 @@
-from src.BibHelp.BiblePart import Chapter, Verse
+from src.BibHelp.BookStructure import Chapter
+from src.BibHelp.BookStructure.Verse import Verse
 from src.BibHelp.Parser.PartParser import PartParser
 
 chapterParser = PartParser(r'^.*?(\d+?)$', lambda match: Chapter(int(match.group(1))))

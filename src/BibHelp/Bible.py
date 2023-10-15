@@ -1,4 +1,7 @@
-from src.BibHelp.BiblePart import *
+from src.BibHelp.BookStructure import Book
+from src.BibHelp.BookStructure import Chapter
+from src.BibHelp.BookStructure.Verse import Verse
+from src.BibHelp.BookStructure.Testament import NewTestament, OldTestament, Testament
 
 
 class Bible:

@@ -1,18 +1,18 @@
 import os
 
 from src.utils.Utils import Utils
-from src.BibHelp.Parser.VisioBibleParser.VisioBibleParser import VisioBibleParser
-from src.BibHelp.Parser.SYNParser.SYNPartParsers import *
+from src.BibHelp.Parser.VisioBibleParser.VisioBibleHTMParser import VisioBibleHTMParser
 from src.BibHelp.Parser.BibleParser import BibleParser
 from src.dump.DBDumper import SQLiteDBumper
 from src.dump.USXDumper import USXDumper
 from src.usx.simpleRuUSXWriter.SimpleRuUSXWriter import SimpleRuUSXWriter
+from src.BibHelp.Parser.NRTParser import NRTParser
 
 # For visiobible to usx and sql
-DB_NAME = '../tmp/bible.db3'
-VISIOBIBLE_FOLDER_PATH = r'/home/vladk/Desktop/RU_RST/'
-NRT_TXT_FILE = r'/home/vladk/git/ProPresenterBibles/versions/IBS.txt'
-USX_RES_FOLDER = r'../tmp/usx_nrt'
+DB_NAME = '/home/vladk/Desktop/Bible_work/bible.db3'
+VISIOBIBLE_FOLDER_PATH = r'/home/vladk/Desktop/Bible_work/nrt/'
+# NRT_TXT_FILE = r'/home/vladk/git/ProPresenterBibles/versions/IBS.txt'
+USX_RES_FOLDER = r'/home/vladk/Desktop/Bible_work/res'
 
 
 def parse_ru_visiobible_and_dump_to_sql_and_usx(ru_visiobible_path: str,
@@ -20,7 +20,7 @@ def parse_ru_visiobible_and_dump_to_sql_and_usx(ru_visiobible_path: str,
                                                 usx_dump_path: str):
     usx_res_path = Utils.prep_path(usx_dump_path)
 
-    visio_bible_parser = VisioBibleParser()
+    visio_bible_parser = VisioBibleHTMParser()
     bible = visio_bible_parser.parse_all(ru_visiobible_path)
 
     bible.print_all_books_info()
@@ -39,12 +39,9 @@ def parse_simple_txt_and_dump_to_sql_and_usx(src_bible_path: str,
                                              usx_dump_path: str):
     usx_res_path = Utils.prep_path(usx_dump_path)
 
-    bible_parser = BibleParser(testament_parser=testamentParser,
-                               book_parser=bookParser,
-                               chapter_parser=chapterParser,
-                               verse_parser=verseParser)
+    bible_parser = BibleParser(NRTParser.NRTParser())
 
-    bible = bible_parser.parse_all(src_bible_path)
+    bible = bible_parser.parse_all_dir(src_bible_path, '*.html')
     bible.print_all_books_info()
 
     sqlite_dumper = SQLiteDBumper(bible=bible)
@@ -61,7 +58,7 @@ def main():
     #                                             sql_dump_path=DB_NAME,
     #                                             usx_dump_path=USX_RES_FOLDER)
 
-    parse_simple_txt_and_dump_to_sql_and_usx(src_bible_path=NRT_TXT_FILE,
+    parse_simple_txt_and_dump_to_sql_and_usx(src_bible_path=VISIOBIBLE_FOLDER_PATH,
                                              sql_dump_path=DB_NAME,
                                              usx_dump_path=USX_RES_FOLDER)
 
