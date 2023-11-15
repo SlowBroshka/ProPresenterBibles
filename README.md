@@ -3,15 +3,25 @@
 
 Репозиторий с исправленными русскими переводами библии для `ProPresenter 7`
 
-- Исправлен синодальный перевод для Macos
-- Исправлен синодальный перевод для Windows
-- Добавлен [Новый русский перевод](https://bookscafe.net/book/bibliya-bibliya_novyy_russkiy_perevod_ibs-200255.html) для Windows
+- Исправлены все опечатки в Синодальном переводе (RST) для macOS и Windows
+- Добавлен [Новый русский перевод (NRT)](https://www.bible.com/ru/bible/143/GEN.1.%D0%9D%D0%A0%D0%9F) для macOS и Windows. Перевод взят из [VisioBible](https://www.visiobible.org.ua/?page=main)
+- Добавлен [Новый русский перевод (IBS)](https://bookscafe.net/book/bibliya-bibliya_novyy_russkiy_perevod_ibs-200255.html) для macOS и Windows
+
+
+## Различие [NRT](https://www.bible.com/ru/bible/143/GEN.1.%D0%9D%D0%A0%D0%9F) и [IBS](https://bookscafe.net/book/bibliya-bibliya_novyy_russkiy_perevod_ibs-200255.html) переводов
+   Если вы не знаете какой перевод вам нужен, то вам нужен [NRT](https://www.bible.com/ru/bible/143/GEN.1.%D0%9D%D0%A0%D0%9F). Именно этот перевод используется в [YouVersion](https://www.bible.com/).
+
 
 ## Описание версий
 
+#### 0.4
+
+- Добавлен [Новый русский перевод (NRT)](https://www.bible.com/ru/bible/143/GEN.1.%D0%9D%D0%A0%D0%9F) Для macOS и Windows. Перевод взят из [VisioBible](https://www.visiobible.org.ua/?page=main)
+
+
 #### 0.3
 
-- Для RST (Синодальный перевод) за основу взят перевод из [VisioBible](https://www.visiobible.org.ua/?page=main) 
+- Для Синодального перевода (RST) за основу взят перевод из [VisioBible](https://www.visiobible.org.ua/?page=main) 
 
 #### 0.2
 
@@ -32,7 +42,7 @@
 
 ### Установка Windows
 
-#### Синодальный перевод
+#### Синодальный перевод (RST)
 1. Запустить `ProPresenter`
 2. Установить Синодальный русский перевод
 
@@ -45,12 +55,15 @@
 
 ![image](https://user-images.githubusercontent.com/15382949/123508776-ee7e0800-d68a-11eb-87cb-c9bbfdd9d759.png)
 
-7. Заменить файл `bible.db3` на `res\Windows\Russian Synodal Translation\bible.db3` из скачанного архива
+7. Заменить файл `bible.db3` на `res\Windows\Russian Synodal Translation (SYN)\bible.db3` из скачанного архива
 8. Открыть `ProPresenter` и убедиться, что исправления подтянулись (Псалтирь 54:1)
 
 ---
 
-#### Новый русский перевод [ссылка](https://bookscafe.net/book/bibliya-bibliya_novyy_russkiy_perevod_ibs-200255.html)
+#### Новый русский перевод [NRT](https://www.bible.com/ru/bible/143/GEN.1.%D0%9D%D0%A0%D0%9F) или [IBS](https://bookscafe.net/book/bibliya-bibliya_novyy_russkiy_perevod_ibs-200255.html)
+
+**Одновременно оба перевода устновить нельзя**
+
 1. Запустить `ProPresenter`
 2. Установить библию `A Conservative Version` из стандартной библиотеки `ProPresenter`
 
@@ -63,26 +76,38 @@
 
 ![image](https://user-images.githubusercontent.com/15382949/123509100-0bb3d600-d68d-11eb-995f-e48ab68a68c7.png)
 
-7. Заменить файлы `bible.db3` и `rvmetadata.xml` на файлы из скачанного архива `res\Windows\New Russian Translation`
-8. Открыть `ProPresenter` и убедиться, что появился новый перевод `(NTC) New Russian Translation` 
+7. Заменить файлы `bible.db3` и `rvmetadata.xml` на файлы из скачанного архива: 
+- Для NRT перевода: `res\Windows\New Russian Translation (NRT)`
+- Для IBS перевода: `res\Windows\International Bible Society (IBS)`
+8. Открыть `ProPresenter` и убедиться, что появился новый перевод `New Russian Translation` 
 
 ![image](https://user-images.githubusercontent.com/15382949/123509520-6e0dd600-d68f-11eb-913a-295feee101f0.png)
 
 ---
 
-### Установка Macos
+### Установка macOS
 
 #### Синодальный перевод
-1. Запустить `ProPresenter`
-2. Установить Синодальный русский перевод
 
-![image](https://user-images.githubusercontent.com/15382949/123508598-d5288c00-d689-11eb-9d18-f911955cec48.png)
-
-3. Закрыть `ProPresenter`
-4. Файл `res\MacOS\Russian Synodal Translation\ntc-rst-ru.rvbible` скопировать в каталог `/Library/Application Support/RenewedVision/RVBibles/v2/`
-5. Запустить `ProPresenter`
-6. Убедиться, что появился новый перевод `(NTC) Russian Synodal Translation`
+1. Файл `res\MacOS\Russian Synodal Translation (SYN)\ntc-rst-ru.rvbible` скопировать в каталог `/Library/Application Support/RenewedVision/RVBibles/v2/`
+2. Запустить `ProPresenter`
+3. Убедиться, что появился новый перевод `(NTC) Russian Synodal Translation`
    ![Снимок экрана 2021-06-14 в 18 18 28](https://user-images.githubusercontent.com/15382949/123508496-4ae02800-d689-11eb-9b6c-b3fbed078172.png)
+
+
+#### #### Новый русский перевод [NRT](https://www.bible.com/ru/bible/143/GEN.1.%D0%9D%D0%A0%D0%9F) или [IBS](https://bookscafe.net/book/bibliya-bibliya_novyy_russkiy_perevod_ibs-200255.html)
+
+**Одновременно оба перевода устновить нельзя**
+
+##### Для [NRT](https://www.bible.com/ru/bible/143/GEN.1.%D0%9D%D0%A0%D0%9F) перевода:
+
+1. Файл `res\MacOS\New Russian Translation (NRT)\ntc-nrt-ru.rvbible` скопировать в каталог `/Library/Application Support/RenewedVision/RVBibles/v2/`
+2. Запустить `ProPresenter`
+
+##### Для [IBS](https://bookscafe.net/book/bibliya-bibliya_novyy_russkiy_perevod_ibs-200255.html) перевода:
+1. Файл `res\MacOS\International Bible Society (IBS)\ntc-ibs-ru.rvbible` скопировать в каталог `/Library/Application Support/RenewedVision/RVBibles/v2/`
+2. Запустить `ProPresenter`
+
 
 ---
 
