@@ -1,4 +1,5 @@
-from src.BibHelp.BiblePart import *
+import re
+from src.BibHelp.BookStructure.BiblePart import BiblePart
 
 
 class PartParser:
