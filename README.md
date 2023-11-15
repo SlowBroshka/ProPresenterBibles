@@ -62,7 +62,7 @@
 
 #### Новый русский перевод [NRT](https://www.bible.com/ru/bible/143/GEN.1.%D0%9D%D0%A0%D0%9F) или [IBS](https://bookscafe.net/book/bibliya-bibliya_novyy_russkiy_perevod_ibs-200255.html)
 
-**Одновременно оба перевода устновить нельзя**
+**Одновременно оба перевода установить нельзя**
 
 1. Запустить `ProPresenter`
 2. Установить библию `A Conservative Version` из стандартной библиотеки `ProPresenter`
@@ -97,7 +97,7 @@
 
 #### #### Новый русский перевод [NRT](https://www.bible.com/ru/bible/143/GEN.1.%D0%9D%D0%A0%D0%9F) или [IBS](https://bookscafe.net/book/bibliya-bibliya_novyy_russkiy_perevod_ibs-200255.html)
 
-**Одновременно оба перевода устновить нельзя**
+**Одновременно оба перевода установить нельзя**
 
 ##### Для [NRT](https://www.bible.com/ru/bible/143/GEN.1.%D0%9D%D0%A0%D0%9F) перевода:
 
