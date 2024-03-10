@@ -1,6 +1,8 @@
 from src.BibHelp.BookStructure import Book
 from src.BibHelp.BookStructure import Chapter
 from src.BibHelp.BookStructure.Verse import Verse
+from src.BibHelp.BookStructure.Book import Book
+from src.BibHelp.BookStructure.Chapter import Chapter
 from src.BibHelp.BookStructure.Testament import NewTestament, OldTestament, Testament
 
 
@@ -17,8 +19,32 @@ class Bible:
     def from_usx_folder(self, path_to_usx_folder: str):
         pass
 
-    def from_db(self, path_to_db: str):
-        pass
+    @staticmethod
+    def from_db(book_list):
+        print(len(book_list))
+        bible = Bible()
+        for full_verse in book_list:
+            book_name = str(full_verse[0])
+            book_opt = bible.old_testament.get_book(book_name)
+            if book_opt is None:
+                bible.add_book(Book(book_name))
+                book_opt = bible.old_testament.get_book(book_name)
+                assert book_opt is not None
+                print(f'Book added: [{book_name}]')
+
+            chapter = int(full_verse[1])
+            chapter_opt = book_opt.get_chapter(chapter)
+            if chapter_opt is None:
+                book_opt.add_chapter(Chapter(chapter))
+                chapter_opt = book_opt.get_chapter(chapter)
+                assert chapter_opt is not None
+
+            verse_num = int(full_verse[2])
+            verse_opt = chapter_opt.get_verse(verse_num)
+            if verse_opt is None:
+                verse_content = str(full_verse[3])
+                chapter_opt.add_verse(Verse(verse_num, verse_content))
+        return bible
 
     def get_all_books(self):
         return self.old_testament.books + self.new_testament.books

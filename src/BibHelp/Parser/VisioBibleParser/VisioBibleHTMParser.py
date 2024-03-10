@@ -68,7 +68,7 @@ class VisioBibleHTMParser:
             except Exception as err:
                 print(f'{err}, UNEXPECTED ERROR')
 
-    def parse_all(self, path: str):
+    def parse_all(self, path: str) -> Bible:
         for f_book in pathlib.Path(path).glob('*.htm'):
             self.parse_book(str(f_book))
 
