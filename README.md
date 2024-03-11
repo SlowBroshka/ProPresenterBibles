@@ -138,7 +138,6 @@
 
 #### Библия под ред. М.П. Кулакова и М.М. Кулакова (BTI) [Пример](https://www.bible.com/ru/bible/313/GEN.1.BTI)
 
-##### Для [IBS](https://bookscafe.net/book/bibliya-bibliya_novyy_russkiy_perevod_ibs-200255.html) перевода:
 1. Файл `res\MacOS\Bible Translation Institute at Zaoksky (BTI)\ntc-bti-ru.rvbible` скопировать в каталог `/Library/Application Support/RenewedVision/RVBibles/v2/`
 2. Запустить `ProPresenter`
 
