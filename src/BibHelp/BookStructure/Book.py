@@ -19,6 +19,12 @@ class Book(BiblePart):
     def add_chapter(self, chapter: Chapter):
         self.chapters.insert(chapter.number, chapter)
 
+    def get_chapter(self, number: int) -> Chapter | None:
+        for chapter in self.chapters:
+            if chapter.number == number:
+                return chapter
+        return None
+
     def get_chapter_count(self):
         return len(self.chapters)
 
