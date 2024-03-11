@@ -6,6 +6,7 @@
 - Исправлены все опечатки в Синодальном переводе (RST) для macOS и Windows
 - Добавлен [Новый русский перевод (NRT)](https://www.bible.com/ru/bible/143/GEN.1.%D0%9D%D0%A0%D0%9F) для macOS и Windows. Перевод взят из [VisioBible](https://www.visiobible.org.ua/?page=main)
 - Добавлен [Новый русский перевод (IBS)](https://bookscafe.net/book/bibliya-bibliya_novyy_russkiy_perevod_ibs-200255.html) для macOS и Windows
+- Добавлен [Библия под ред. М.П. Кулакова и М.М. Кулакова (BTI)](https://www.bible.com/ru/bible/313/GEN.1.BTI) для macOS и Windows. Перевод взят из [Институт перевода Библии в Заокском](https://www.ph4.org/b4_1.php)
 
 
 ## Различие [NRT](https://www.bible.com/ru/bible/143/GEN.1.%D0%9D%D0%A0%D0%9F) и [IBS](https://bookscafe.net/book/bibliya-bibliya_novyy_russkiy_perevod_ibs-200255.html) переводов
@@ -13,6 +14,11 @@
 
 
 ## Описание версий
+
+#### 0.5
+
+- Добавлен [Библия под ред. М.П. Кулакова и М.М. Кулакова (BTI)](https://www.bible.com/ru/bible/313/GEN.1.BTI) для macOS и Windows. Перевод взят из [Институт перевода Библии в Заокском](https://www.ph4.org/b4_1.php)
+
 
 #### 0.4
 
@@ -85,6 +91,27 @@
 
 ---
 
+#### Библия под ред. М.П. Кулакова и М.М. Кулакова (BTI) [Пример](https://www.bible.com/ru/bible/313/GEN.1.BTI)
+
+1. Запустить `ProPresenter`
+2. Установить библию `Geneva Bible (1599) (Geneva)` из стандартной библиотеки `ProPresenter`
+
+![image](https://github.com/SlowBroshka/ProPresenterBibles/assets/15382949/3e41089a-3b5e-4b23-a56f-54f38c8e1ff8)
+
+3. Закрыть `ProPresenter`
+4. Перейти в каталог `C:\ProgramData\RenewedVision\ProPresenter\Bibles`
+5. Открыть файл `BibleData.proPref` в текстовом редакторе (блокноте)
+6. В файле найти название каталога, который отвечает за `Geneva Bible (1599) (Geneva)` и перейти в него (на скриншоте - это `9b221d86-9910-4a89-b8fb-9b345f713693`, соответственно полный путь к каталогу в который надо перейти выглядит так: `C:\ProgramData\RenewedVision\ProPresenter\Bibles\9b221d86-9910-4a89-b8fb-9b345f713693`) 
+
+![image](https://github.com/SlowBroshka/ProPresenterBibles/assets/15382949/13840982-914d-4485-b8a2-ea57a0224f7a)
+![image](https://github.com/SlowBroshka/ProPresenterBibles/assets/15382949/7b9e706d-47f8-4fd0-84d2-f46c6e6b3637)
+
+
+7. Заменить файлы `bible.db3` и `rvmetadata.xml` на файлы из скачанного архива `res\Windows\Bible Translation Institute at Zaoksky (BTI)`
+8. Открыть `ProPresenter` и убедиться, что появился новый перевод `(BTI) Bible Translation Institute at Zaoksky` 
+
+---
+
 ### Установка macOS
 
 #### Синодальный перевод
@@ -95,7 +122,7 @@
    ![Снимок экрана 2021-06-14 в 18 18 28](https://user-images.githubusercontent.com/15382949/123508496-4ae02800-d689-11eb-9b6c-b3fbed078172.png)
 
 
-#### #### Новый русский перевод [NRT](https://www.bible.com/ru/bible/143/GEN.1.%D0%9D%D0%A0%D0%9F) или [IBS](https://bookscafe.net/book/bibliya-bibliya_novyy_russkiy_perevod_ibs-200255.html)
+#### Новый русский перевод [NRT](https://www.bible.com/ru/bible/143/GEN.1.%D0%9D%D0%A0%D0%9F) или [IBS](https://bookscafe.net/book/bibliya-bibliya_novyy_russkiy_perevod_ibs-200255.html)
 
 **Одновременно оба перевода установить нельзя**
 
@@ -106,6 +133,13 @@
 
 ##### Для [IBS](https://bookscafe.net/book/bibliya-bibliya_novyy_russkiy_perevod_ibs-200255.html) перевода:
 1. Файл `res\MacOS\International Bible Society (IBS)\ntc-ibs-ru.rvbible` скопировать в каталог `/Library/Application Support/RenewedVision/RVBibles/v2/`
+2. Запустить `ProPresenter`
+
+
+#### Библия под ред. М.П. Кулакова и М.М. Кулакова (BTI) [Пример](https://www.bible.com/ru/bible/313/GEN.1.BTI)
+
+##### Для [IBS](https://bookscafe.net/book/bibliya-bibliya_novyy_russkiy_perevod_ibs-200255.html) перевода:
+1. Файл `res\MacOS\Bible Translation Institute at Zaoksky (BTI)\ntc-bti-ru.rvbible` скопировать в каталог `/Library/Application Support/RenewedVision/RVBibles/v2/`
 2. Запустить `ProPresenter`
 
 
