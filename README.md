@@ -9,6 +9,11 @@
 - Добавлен [Библия под ред. М.П. Кулакова и М.М. Кулакова (BTI)](https://www.bible.com/ru/bible/313/GEN.1.BTI) для macOS и Windows. Перевод взят из [Институт перевода Библии в Заокском](https://www.ph4.org/b4_1.php)
 
 
+Установка
+
+- [Установка Windows](#установка-windows)
+   - [синодальный перевод rst](#синодальный-перевод-rst)
+
 ## Различие [NRT](https://www.bible.com/ru/bible/143/GEN.1.%D0%9D%D0%A0%D0%9F) и [IBS](https://bookscafe.net/book/bibliya-bibliya_novyy_russkiy_perevod_ibs-200255.html) переводов
    Если вы не знаете какой перевод вам нужен, то вам нужен [NRT](https://www.bible.com/ru/bible/143/GEN.1.%D0%9D%D0%A0%D0%9F). Именно этот перевод используется в [YouVersion](https://www.bible.com/).
 
