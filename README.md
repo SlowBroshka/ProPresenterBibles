@@ -28,6 +28,11 @@
 
 ## Описание версий
 
+#### 0.5.2
+
+- Почищен перевод NRT (https://github.com/SlowBroshka/ProPresenterBibles/issues/24)
+
+
 #### 0.5
 
 - Добавлен [Библия под ред. М.П. Кулакова и М.М. Кулакова (BTI)](https://www.bible.com/ru/bible/313/GEN.1.BTI) для macOS и Windows. Перевод взят из [Институт перевода Библии в Заокском](https://www.ph4.org/b4_1.php)
