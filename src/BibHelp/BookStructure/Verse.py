@@ -5,6 +5,7 @@ from src.BibHelp.BookStructure.BiblePart import BiblePart
 class Verse(BiblePart):
     __clean_patterns = {re.compile(r' {2,}'): ' ', re.compile(r'<pb/>'): '', re.compile(r'</t>'): '',
                         re.compile(r'<t>'): '', re.compile(r'<i>'): '', re.compile(r'</i>'): '',
+                        re.compile(r'<j>'): '', re.compile(r'</j>'): '',
                         re.compile(r'<e>'): '', re.compile(r'</e>'): '', re.compile(r'<f>.+?</f>'): ''}
 
     def __init__(self, number: int, content: str):
